@@ -129,14 +129,7 @@ public class ColorTest {
 
     @Test
     public void test_null_values() {
-        assertThrows(NullPointerException.class, () -> new Color(null, 50, 150));
-        assertThrows(NullPointerException.class, () -> colorRGBInt.setRed(null));
-        assertThrows(NullPointerException.class, () -> colorRGBHex.setRed(null));
-        assertThrows(NullPointerException.class, () -> colorRGBInt.setGreen(null));
-        assertThrows(NullPointerException.class, () -> colorRGBHex.setGreen(null));
-        assertThrows(NullPointerException.class, () -> colorRGBInt.setBlue(null));
-        assertThrows(NullPointerException.class, () -> colorRGBHex.setBlue(null));
-        assertThrows(NullPointerException.class, () -> colorRGBInt.setHexValue(null));
-        assertThrows(NullPointerException.class, () -> colorRGBHex.setHexValue(null));
+        assertThrows(IllegalArgumentException.class, () -> colorRGBInt.setHexValue(null));
+        assertThrows(IllegalArgumentException.class, () -> colorRGBHex.setHexValue(null));
     }
 }

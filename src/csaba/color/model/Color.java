@@ -6,10 +6,7 @@ public class Color {
     private int green;
     private int blue;
     private String hexValue;
-    public Color(Integer red, Integer green, Integer blue) {
-        if (red == null || green == null || blue == null) {
-            throw new NullPointerException("One or more color values are null.");
-        }
+    public Color(int red, int green, int blue) {
         checkColorIntValue(red);
         checkColorIntValue(green);
         checkColorIntValue(blue);
@@ -21,7 +18,7 @@ public class Color {
 
     public Color(String hexValue) {
         if (hexValue == null) {
-            throw new NullPointerException("The hex value is null.");
+            throw new IllegalArgumentException("The hex value is null.");
         }
         if (hexValue.length() != 7) {
             throw new IllegalArgumentException("The length of the hex value should be 7.");
@@ -46,7 +43,7 @@ public class Color {
 
     public void setHexValue(String hexValue) {
         if (hexValue == null) {
-            throw new NullPointerException("The hex value is null.");
+            throw new IllegalArgumentException("The hex value is null.");
         }
         if (hexValue.length() != 7) {
             throw new IllegalArgumentException("The length of the hex value should be 7.");
@@ -64,10 +61,7 @@ public class Color {
         return red;
     }
 
-    public void setRed(Integer red) {
-        if (red == null) {
-            throw new NullPointerException("The hex value is null.");
-        }
+    public void setRed(int red) {
         checkColorIntValue(red);
         this.red = red;
         hexValue = String.format("#%02X%02X%02X", red, green, blue);
@@ -77,10 +71,7 @@ public class Color {
         return green;
     }
 
-    public void setGreen(Integer green) {
-        if (green == null) {
-            throw new NullPointerException("The hex value is null.");
-        }
+    public void setGreen(int green) {
         checkColorIntValue(green);
         this.green = green;
         hexValue = String.format("#%02X%02X%02X", red, green, blue);
@@ -90,10 +81,7 @@ public class Color {
         return blue;
     }
 
-    public void setBlue(Integer blue) {
-        if (blue == null) {
-            throw new NullPointerException("The hex value is null.");
-        }
+    public void setBlue(int blue) {
         checkColorIntValue(blue);
         this.blue = blue;
         hexValue = String.format("#%02X%02X%02X", red, green, blue);
