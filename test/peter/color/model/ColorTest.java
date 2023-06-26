@@ -1,18 +1,19 @@
-package csaba.color.model;
+package peter.color.model;
 
+import csaba.color.model.Color;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PeterColorTest {
+public class ColorTest {
     // [value=#D58D35, r=213, g=141, b=53]
-    private Color color;
+    private csaba.color.model.Color color;
 
     @BeforeEach
     public void setUp() {
-        color = new Color(213, 141, 53);
+        color = new csaba.color.model.Color(213, 141, 53);
     }
 
     @AfterEach
@@ -37,39 +38,39 @@ public class PeterColorTest {
 
     @Test
     public void test_constructor_RGB_with_red_value_smaller_than_0_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color(-3, 141, 53));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color(-3, 141, 53));
     }
 
     @Test
     public void test_constructor_RGB_with_red_value_bigger_than_255_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color(264, 141, 53));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color(264, 141, 53));
     }
 
     @Test
     public void test_constructor_RGB_with_green_value_smaller_than_0_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color(213, -31, 53));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color(213, -31, 53));
     }
 
     @Test
     public void test_constructor_RGB_with_green_value_bigger_than_255_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color(213, 421, 53));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color(213, 421, 53));
     }
 
     @Test
     public void test_constructor_RGB_with_blue_value_smaller_than_0_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color(213, 141, -132));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color(213, 141, -132));
     }
 
     @Test
     public void test_constructor_RGB_with_blue_value_bigger_than_255_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color(213, 141, 533));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color(213, 141, 533));
     }
 
     // -------------------------------------
     // Constructor Color(hexValue)
     @Test
     public void test_constructor_HexValue() {
-        color = new Color("#D58D35");
+        color = new csaba.color.model.Color("#D58D35");
         assertAll("Color object non conformes",
                 () -> assertEquals(213, color.getRed(), "getRed() est incorrect"),
                 () -> assertEquals(141, color.getGreen(), "getGreen() est incorrect"),
@@ -79,27 +80,27 @@ public class PeterColorTest {
 
     @Test
     public void test_constructor_HexValue_with_null_value_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color(null));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color(null));
     }
 
     @Test
     public void test_constructor_HexValue_with_wrong_value_1_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color("A26F76"));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color("A26F76"));
     }
 
     @Test
     public void test_constructor_HexValue_with_wrong_value_2_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color("#a26F76"));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color("#a26F76"));
     }
 
     @Test
     public void test_constructor_HexValue_with_wrong_value_3_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color("#G26F76"));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color("#G26F76"));
     }
 
     @Test
     public void test_constructor_HexValue_with_wrong_value_4_Exception() {
-        assertThrows(IllegalArgumentException.class, () -> color = new Color("#A26F7"));
+        assertThrows(IllegalArgumentException.class, () -> color = new csaba.color.model.Color("#A26F7"));
     }
 
     @Test
