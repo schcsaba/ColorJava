@@ -13,19 +13,11 @@ public class Color {
         this.red = red;
         this.green = green;
         this.blue = blue;
-        hexValue = String.format("#%02X%02X%02X", red, green, blue);
+        hexValue = rgbToHex(red, green, blue);
     }
 
     public Color(String hexValue) {
-        if (hexValue == null) {
-            throw new IllegalArgumentException("The hex value is null.");
-        }
-        if (hexValue.length() != 7) {
-            throw new IllegalArgumentException("The length of the hex value should be 7.");
-        }
-        if (hexValue.charAt(0) != '#') {
-            throw new IllegalArgumentException("The hex value should start with a # character.");
-        }
+        checkHexValue(hexValue);
         this.hexValue =  hexValue;
         red = Integer.valueOf(hexValue.substring(1, 3), 16);
         green = Integer.valueOf(hexValue.substring(3, 5), 16);
@@ -42,15 +34,7 @@ public class Color {
     }
 
     public void setHexValue(String hexValue) {
-        if (hexValue == null) {
-            throw new IllegalArgumentException("The hex value is null.");
-        }
-        if (hexValue.length() != 7) {
-            throw new IllegalArgumentException("The length of the hex value should be 7.");
-        }
-        if (hexValue.charAt(0) != '#') {
-            throw new IllegalArgumentException("The hex value should start with a # character.");
-        }
+        checkHexValue(hexValue);
         this.hexValue = hexValue;
         red = Integer.valueOf(hexValue.substring(1, 3), 16);
         green = Integer.valueOf(hexValue.substring(3, 5), 16);
@@ -64,7 +48,7 @@ public class Color {
     public void setRed(int red) {
         checkColorIntValue(red);
         this.red = red;
-        hexValue = String.format("#%02X%02X%02X", red, green, blue);
+        hexValue = rgbToHex(red, green, blue);
     }
 
     public int getGreen() {
@@ -74,7 +58,7 @@ public class Color {
     public void setGreen(int green) {
         checkColorIntValue(green);
         this.green = green;
-        hexValue = String.format("#%02X%02X%02X", red, green, blue);
+        hexValue = rgbToHex(red, green, blue);
     }
 
     public int getBlue() {
@@ -84,12 +68,28 @@ public class Color {
     public void setBlue(int blue) {
         checkColorIntValue(blue);
         this.blue = blue;
-        hexValue = String.format("#%02X%02X%02X", red, green, blue);
+        hexValue = rgbToHex(red, green, blue);
     }
 
     private void checkColorIntValue(int color) {
         if (color < 0 || color > 255) {
             throw new IllegalArgumentException("The color value should be between 0 and 255.");
         }
+    }
+
+    private void checkHexValue(String hexValue) {
+        if (hexValue == null) {
+            throw new IllegalArgumentException("The hex value is null.");
+        }
+        if (hexValue.length() != 7) {
+            throw new IllegalArgumentException("The length of the hex value should be 7.");
+        }
+        if (hexValue.charAt(0) != '#') {
+            throw new IllegalArgumentException("The hex value should start with a # character.");
+        }
+    }
+
+    private String rgbToHex(int red, int green, int blue) {
+        return String.format("#%02X%02X%02X", red, green, blue);
     }
 }
