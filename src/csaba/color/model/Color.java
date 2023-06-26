@@ -87,6 +87,11 @@ public class Color {
         if (hexValue.charAt(0) != '#') {
             throw new IllegalArgumentException("The hex value should start with a # character.");
         }
+        for (int i = 1; i < hexValue.length(); i++) {
+            if (Character.isAlphabetic(hexValue.charAt(i)) && !Character.isUpperCase(hexValue.charAt(i))) {
+                throw new IllegalArgumentException("The characters of the hex value should be uppercase.");
+            }
+        }
     }
 
     private String rgbToHex(int red, int green, int blue) {
