@@ -17,6 +17,12 @@ public class Color {
     }
 
     public Color(String hexValue) {
+        if (hexValue.length() != 7) {
+            throw new IllegalArgumentException("The length of the hex value should be 7.");
+        }
+        if (hexValue.charAt(0) != '#') {
+            throw new IllegalArgumentException("The hex value should start with a # character.");
+        }
         this.hexValue =  hexValue;
         red = Integer.valueOf(hexValue.substring(1, 3), 16);
         green = Integer.valueOf(hexValue.substring(3, 5), 16);
@@ -33,6 +39,12 @@ public class Color {
     }
 
     public void setHexValue(String hexValue) {
+        if (hexValue.length() != 7) {
+            throw new IllegalArgumentException("The length of the hex value should be 7.");
+        }
+        if (hexValue.charAt(0) != '#') {
+            throw new IllegalArgumentException("The hex value should start with a # character.");
+        }
         this.hexValue = hexValue;
         red = Integer.valueOf(hexValue.substring(1, 3), 16);
         green = Integer.valueOf(hexValue.substring(3, 5), 16);

@@ -124,6 +124,6 @@ public class ColorTest {
     @Test
     public void test_constructors() {
         assertThrows(IllegalArgumentException.class, () -> new Color(300, 50, 150));
-        assertThrows(IllegalArgumentException.class, () -> new Color("$MS00AA"));
+        assertThrows(IllegalArgumentException.class, () -> new Color("$BB00AA"));
     }
 }
